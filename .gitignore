@@ -1,0 +1,17 @@
+node_modules
+package-lock.json
+.idea
+launch.json
+settings.json
+FONT/
+fontpython/experiments
+*.pyc
+*.gif
+*.sh
+baseline_checkpoint/
+__pycache__
+fontpython/data/handwriting
+fontpython/data/package
+fontpython/data/pair
+fontpython/data/experiment_0_batch_16
+test_env.zip
