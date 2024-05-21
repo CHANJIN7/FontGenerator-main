@@ -1,66 +1,71 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Simple Contact Us form</title>
-	<link rel="stylesheet" href="./css/styles.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <meta charset="UTF-8">
+    <title>Font Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        .custom-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 15px;
+            transition: transform 0.3s;
+        }
+
+        .custom-icon:hover {
+            transform: scale(1.1);
+        }
+        #school-logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 30px;
+            color: rgb(142, 76, 36);
+            line-height: 1.5;
+        }
+    </style>
 </head>
+
 <body>
-    <!-- 폼은 데이터를 서버의 "/upload" 엔드포인트로 제출할 것 -->
-    <form class="form" action="/upload" method="POST" enctype="multipart/form-data">
-        <div class="index-back">
-            <div class="title">
-                <h1>템플릿 업로드</h1>
-            </div>
-            
-            <div class="form-items">
-                <div class= "input">
-                    <input type="file" name="templateImage" multiple>        
+    <div id="school-logo">
+        KOREATECH<br>
+        @min_min_01<br>
+        @chx_xxn<br>
+        @mn_jong
+    </div>
+    <div class="container text-center d-flex flex-column justify-content-center align-items-center" id="main-content">
+        <h1>KANG LAB</h1>
+        <h2>FONT GENERATOR</h2>
+        <p>Using our website<br>you can create your own fonts!</p>
+
+        <div>
+            <a href="#"><i class="fab fa-windows fa-2x mx-3"></i></a> <!-- Windows 아이콘 -->
+            <a href="#"><i class="fab fa-apple fa-2x mx-3"></i></a> <!-- Mac 아이콘 -->
+            <a href="#"><i class="fab fa-linux fa-2x mx-3"></i></a> <!-- Linux 아이콘 -->
+        
+        </div>
+
+        <!-- Form 추가 -->
+        <form class="form mt-5" action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="index-back">
+                <div class="title">
+            <div class="file-upload">
+            <label for="templateImage" class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i> Select File 
+            </label>
+            <input type="file" id="templateImage" name="templateImage" multiple>
+        </div>
+
+
+                <div>
+                    <input class="btn btn-light mt-3" type="submit" value="Upload">
                 </div>
             </div>
-            
-            <div>
-                <input class ="btn" type="submit" value="업로드">
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
-=======
-=======
->>>>>>> main
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-	<meta charset="UTF-8">
-	<title>Simple Contact Us form</title>
-	<link rel="stylesheet" href="./css/styles.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-</head>
-<body>
-    <!-- 폼은 데이터를 서버의 "/upload" 엔드포인트로 제출할 것 -->
-    <form class="form" action="/upload" method="POST" enctype="multipart/form-data">
-        <div class="index-back">
-            <div class="title">
-                <h1>템플릿 업로드</h1>
-            </div>
-            
-            <div class="form-items">
-                <div class= "input">
-                    <input type="file" name="templateImage" multiple>        
-                </div>
-            </div>
-            
-            <div>
-                <input class ="btn" type="submit" value="업로드">
-            </div>
-        </div>
-    </form>
-</body>
-<<<<<<< HEAD
->>>>>>> 153cada270f50fc1230aea0cbaa8781288294c90
-=======
->>>>>>> main
+
 </html>
