@@ -10,7 +10,7 @@ const PNG = require('pngjs').PNG;
 const svgicons2svgfont = require('svgicons2svgfont');
 const svg2ttf = require('svg2ttf');
 // const ImageTracer = require('./public/javascript/imagetracer_v1.2.1.js');
-const ImageTracer = require('/home/dev/public/javascript/imagetracer_v1.2.1.js');
+const ImageTracer = require('../public/javascript/imagetracer_v1.2.1.js');
 const { log } = require('console');
 const fontStream = new svgicons2svgfont({
     fontName: 'myfont'
@@ -47,8 +47,8 @@ router.post('/', (req, res) => {
     // const root_dir = 'python/' + +new Date();
     // const root_dir = '/home/dev/fontpython/data' + +new Date();
     // const exp_dir = '/home/dev/fontpython/experiments' + +new Date();
-    const root_dir = '/home/dev/fontpython/data'
-    const exp_dir = '/home/dev/fontpython/experiments'
+    const root_dir = 'C:/FontGenerator-main/fontpython/data'
+    const exp_dir =  'C:/FontGenerator-main/fontpython/experiments'
     // const scan_dir = root_dir + '/scanned_image';
     // const crop_dir = root_dir + '/cropped_image';
     // const sample_dir = root_dir + '/sample_image';
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
     const model_dir = exp_dir + '/checkpoint';
     const logs_dir = exp_dir + '/logs'
     // const result_dir = exp_dir + '/result';
-    const result_dir = '/home/dev/FONT/experiment_9_batch_16';
+    const result_dir = 'C:/FontGenerator-main/FONT/experiment_1_batch_16';
 
     const svg_dir = result_dir + '/svg'
     const svg_fonts_dir = result_dir + '/svg_fonts'
@@ -102,34 +102,34 @@ router.post('/', (req, res) => {
 
     fs.closeSync(fs.openSync(`${logs_dir}/progress`, 'w'));
 
-    execSync(`cp /home/dev/public/uploads/*.png ${scan_dir}`);
+    execSync(` /public/uploads/*.png ${scan_dir}`);
     training_progress.push("image uploaded");   
 
     console.log(scan_dir);
     
-    execSync(`python /home/dev/fontpython/01_crop.py --src_dir=${scan_dir} --dst_dir=${crop_dir} --unicode_txt=${root_dir}/399-uniform.txt`);
+    execSync(`python /fontpython/01_crop.py --src_dir=${scan_dir} --dst_dir=${crop_dir} --unicode_txt=${root_dir}/399-uniform.txt`);
     training_progress.push("image cropped");
 
     console.log('Loading File .... /home/dev/fontpython/01_crop.py');
     
-    execSync(`python /home/dev/fontpython/02_font2image.py --src_font=${root_dir}/NanumGothic.ttf --dst_font=${root_dir}/NanumGothic.ttf --sample_dir=${sample_dir} --handwriting_dir=${crop_dir}`);
+    execSync(`python /fontpython/02_font2image.py --src_font=${root_dir}/NanumGothic.ttf --dst_font=${root_dir}/NanumGothic.ttf --sample_dir=${sample_dir} --handwriting_dir=${crop_dir}`);
     training_progress.push("image created");
 
-    console.log('Loading File .... /home/dev/fontpython/02_font2image.py');
+    console.log('Loading File .... /fontpython/02_font2image.py');
     
-    execSync(`python /home/dev/fontpython/03_package.py --dir=${sample_dir} --save_dir=${data_dir}`)
+    execSync(`python /fontpython/03_package.py --dir=${sample_dir} --save_dir=${data_dir}`)
     training_progress.push("data compressed");
-    console.log('Loading File .... /home/dev/fontpython/03_package.py');
+    console.log('Loading File .... /fontpython/03_package.py');
     
-    execSync(`python /home/dev/fontpython/04_train.py --experiment_dir=${exp_dir} --experiment_id=9 --batch_size=16 --lr=0.001 --epoch=40 --sample_steps=100 --schedule=20 --L1_penalty=100 --Lconst_penalty=15 --freeze_encoder=1`);
+    execSync(`python /fontpython/04_train.py --experiment_dir=${exp_dir} --experiment_id=9 --batch_size=16 --lr=0.001 --epoch=40 --sample_steps=100 --schedule=20 --L1_penalty=100 --Lconst_penalty=15 --freeze_encoder=1`);
     training_progress.push("first trained");
-    console.log('/Loading File.... /home/dev/fontpython/04_train.py');
+    console.log('/Loading File.... /fontpython/04_train.py');
     
-    execSync(`python /home/dev/fontpython/04_train.py --experiment_dir=${exp_dir} --experiment_id=9 --batch_size=16 --lr=0.001 --epoch=120 --sample_steps=100 --schedule=40 --L1_penalty=500 --Lconst_penalty=1000 --freeze_encoder=1`);
+    execSync(`python /fontpython/04_train.py --experiment_dir=${exp_dir} --experiment_id=9 --batch_size=16 --lr=0.001 --epoch=120 --sample_steps=100 --schedule=40 --L1_penalty=500 --Lconst_penalty=1000 --freeze_encoder=1`);
     training_progress.push("secondPhaseTrained");
 
     console.log('----------------------------------------------------'+model_dir)
-    execSync(`python /home/dev/fontpython/05_infer.py --model_dir=${model_dir}/experiment_9_batch_16 --batch_size=1 --source_obj=${root_dir}/package/val.obj --embedding_ids=0 --save_dir=${result_dir}/inferred_result --progress_file=${logs_dir}/experiment_9_batch_16/progress`);
+    execSync(`python /fontpython/05_infer.py --model_dir=${model_dir}/experiment_1_batch_16 --batch_size=1 --source_obj=${root_dir}/package/val.obj --embedding_ids=0 --save_dir=${result_dir}/inferred_result --progress_file=${logs_dir}/experiment_1_batch_16/progress`);
     training_progress.push("Inference");
     
 
