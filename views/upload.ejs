@@ -49,7 +49,7 @@
                             <img src="./uploads/3-uniform.png" class="images" />
                             <span id="status" style="display: block;"></span>
                             <center>
-                                <button id="upload-btn" class="custom-btn">START</button>
+                                <input id="upload-btn" type="submit" class="custom-btn" value="START" name="submit" />
                             </center>
                             <div class="loader" style="display: none"></div>
                             <div class="loader" style="display: none"></div>
@@ -62,12 +62,6 @@
         </div>
     </section><!-- End Hero -->
 
-    <script>
-        document.getElementById('upload-btn').addEventListener('click', function() {
-            window.location.href = 'http://localhost:8080/upload';
-        });
-    </script>
-    
     <script>
         var intervalObj;
         $(document).ready(function () {
