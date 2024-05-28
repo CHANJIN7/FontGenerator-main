@@ -7,7 +7,14 @@ router.get('/', (req, res) => {
 });
 
 router.get('/download', (req, res) => {
-    res.download('/home/dev/public/myfont.ttf');
+    res.download('public/uploads/Professor.ttf');
+});
+
+
+router.get('/templatedown', (req, res) => {
+    res.download('C:/FontGenerator-main/public/template/template1.jpg');
+    res.download('C:/FontGenerator-main/public/template/template2.jpg');
+    res.download('C:/FontGenerator-main/public/template/template3.jpg');
 });
 
 module.exports = router;
