@@ -29,12 +29,12 @@ app.use('/upload', uploadRouter);
 app.use('/progress', progressRouter);
 
 
-// 404 에러 처리
+//404 에러 처리
 app.use((req, res, next) => {
     res.status(404).send('NOT FOUND');
 });
 
-// 500 에러 처리
+//500 에러 처리
 app.use((err, req, res, next) => {
     console.error(err);
     res.status(500).send('SERVER ERROR');    
