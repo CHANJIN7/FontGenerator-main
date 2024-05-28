@@ -32,6 +32,7 @@
     </style>    
 </head>
 
+<body>
     <!-- ======= Hero Section ======= -->
     <section id="hero">
         <div class="hero-container">
@@ -63,12 +64,9 @@
     </section><!-- End Hero -->
 
     <script>
-        var intervalObj;
         $(document).ready(function () {
             $('#uploadForm').on('submit', function (e) {
                 e.preventDefault(); // 현재 이벤트의 기본 동작을 중단한다.
-
-                //   var startTrain = $(this).serialize();
 
                 $('.loader').css({ 'display': 'inline-block' })
                 $('#upload-btn').css({ 'display': 'none' })
@@ -77,13 +75,11 @@
                 $(this).ajaxSubmit({
                     url: '/progress',
                     type: "POST",
-                    data: 'startTrain',
-                    // data: startTrain,
-
-
+                    error: function (xhr) {
+                        $("#status").empty().text('Error: ' + xhr.status);
+                    },
                     success: function (response) {
-                        window.location.href = '/progress'
-                        // window.location.href="/progress"
+                        // 서버에서 리디렉션을 처리할 때 아무 작업도 필요하지 않음
                     }
                 });
                 return false;
