@@ -75,9 +75,6 @@
                 $(this).ajaxSubmit({
                     url: '/progress',
                     type: "POST",
-                    error: function (xhr) {
-                        $("#status").empty().text('Error: ' + xhr.status);
-                    },
                     success: function (response) {
                         // 서버에서 리디렉션을 처리할 때 아무 작업도 필요하지 않음
                     }
